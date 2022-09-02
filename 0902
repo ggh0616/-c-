@@ -1,0 +1,35 @@
+//------------------------------------------------------------------
+// 2022년 9월 2일 c++
+// 강의 자동 저장 추가										1주차 1일
+// 모두의 c++ | c++reference.com
+// google coding convention -> 시간 될 때 
+//------------------------------------------------------------------
+#include <iostream>
+#include <fstream>
+#include <chrono>
+
+// [문제] "01.cpp" 파일을 읽어서 저정할 수 있다면 복습할 수 있다.
+// 지금은 몰라도 된다 -> 공부하면 좋다
+// 공부할 내용: c++의 역사, 기본입출력, namespace std;
+// 다음시간: 파일을 저장기능을 save 함수로 분리
+
+int main()
+{
+	// [1단계] "01.cpp" 모두 읽어 화면에 출력한다.
+	// [2단계] 읽은 내용을 파일에 저장한다.
+	// [3단계] 저장한 시간도 기록한다.
+
+	std::ifstream in{ "01.cpp" }; // {} -> uniform initialization 
+	std::ofstream out{ "02.txt", std::ios::app }; //ios::app -> 
+
+	//저장된 시간을 기록한다.
+	auto now = std::chrono::system_clock::now( );
+	out << std::chrono::zoned_time( "Asia/Seoul", now ) << std::endl; //zoned_time -> 지역별 시간 변경시 사용
+
+	char c;
+	in >> std::noskipws; //공백까지 읽도록 지시
+
+	while ( in >> c ) {
+		out << c; // c에 저장한 글자를 파일에 출력
+	}
+}
