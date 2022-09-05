@@ -1,0 +1,1775 @@
+
+-----------------------------------
+저장한 시간 - 2022-09-05 13:41:51.5746287 GMT+9
+#pragma once
+
+#include <string>
+void save(std::string_view);
+-----------------------------------
+저장한 시간 - 2022-09-05 13:41:51.5998291 GMT+9
+#include <string>
+#include <fstream>
+#include <chrono>
+
+void save(std::string_view file)
+{
+	std::ifstream in{ file.data() }; // {} -> uniform initialization 
+	std::ofstream out{ "02.txt", std::ios::app }; //ios::app -> 
+
+	//저장된 시간을 기록한다.
+	out << std::endl;
+	out << "-----------------------------------" << std::endl;
+	out << "저장한 시간 - ";
+	auto now = std::chrono::system_clock::now();
+	out << std::chrono::zoned_time("Asia/Seoul", now) << std::endl; //zoned_time -> 지역별 시간 변경시 사용
+
+	char c;
+	in >> std::noskipws; //공백까지 읽도록 지시
+
+	while (in >> c) {
+		out << c; // c에 저장한 글자를 파일에 출력
+	}
+}
+-----------------------------------
+저장한 시간 - 2022-09-05 13:41:51.6063598 GMT+9
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++
+// 강의 자동 저장 추가										2주차 1일
+//------------------------------------------------------------------
+#include <iostream>
+#include "save.h"
+
+// [문제] "01.cpp" 파일을 읽어서 저정할 수 있다면 복습할 수 있다.
+// 지금은 몰라도 된다 -> 공부하면 좋다
+// 공부할 내용: c++의 역사, 기본입출력, namespace std;
+// 다음시간: 파일을 저장기능을 save 함수로 분리
+
+int main()
+{
+	// [1단계] "01.cpp" 모두 읽어 화면에 출력한다.
+	// [2단계] 읽은 내용을 파일에 저장한다.
+	// [3단계] 저장한 시간도 기록한다.
+	save("save.h");
+	save("save.cpp");
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 13:49:29.9929794 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+int main()
+{
+	cout << "안녕" << " C++" << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:06:00.7248634 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	save("0905.cpp");
+	while (true) {
+		cout << "원하시는 단을 입력하시오: ";
+		int number;
+		int x = 1;
+		cin >> number;
+		while (x == 10) {
+			cout << number << "*" << x << "=" << number * x << endl;
+			x += 1;
+		}
+	}
+	
+	
+	
+	/*while (true) {
+		cout << "이름을 입력하시오: ";
+		string name;
+		cin >> name;
+		cout << name << "님 반갑습니다." << endl;
+	*/	
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:06:54.4545412 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	save("0905.cpp");
+	while (true) {
+		cout << "원하시는 단을 입력하시오: ";
+		int number;
+		int x = 1;
+		cin >> number;
+		for (int x = 1; x < 10; ++x) {
+			cout << number << "*" << x << "=" << number * x << endl;
+			x += 1;
+		}
+	}
+	
+	
+	
+	/*while (true) {
+		cout << "이름을 입력하시오: ";
+		string name;
+		cin >> name;
+		cout << name << "님 반갑습니다." << endl;
+	*/	
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:07:05.2438700 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	save("0905.cpp");
+	while (true) {
+		cout << "원하시는 단을 입력하시오: ";
+		int number;
+		int x = 1;
+		cin >> number;
+		for (int x = 1; x < 10; ++x) 
+			cout << number << "*" << x << "=" << number * x << endl;		
+	}
+	
+	
+	
+	/*while (true) {
+		cout << "이름을 입력하시오: ";
+		string name;
+		cin >> name;
+		cout << name << "님 반갑습니다." << endl;
+	*/	
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:11:17.5484698 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	save("0905.cpp");
+	while (true) {
+		cout << "원하시는 단을 입력하시오: ";
+		int number;
+		cin >> number;
+		for (int i = 1; i <=9; ++i) {
+			cout << number << "*" << i << "=" << number * i << endl;
+		}			
+	}	
+	/*while (true) {
+		cout << "이름을 입력하시오: ";
+		string name;
+		cin >> name;
+		cout << name << "님 반갑습니다." << endl;
+	*/	
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:11:29.9504483 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	save("0905.cpp");
+	while (true) {
+		cout << "원하시는 단을 입력하시오: ";
+		int number;
+		cin >> number;
+		for (int i = 1; i <=9; ++i) {
+			cout << number << "*" << i << "=" << number * i << endl;
+		}			
+	}	
+	/*while (true) {
+		cout << "이름을 입력하시오: ";
+		string name;
+		cin >> name;
+		cout << name << "님 반갑습니다." << endl;
+	*/	
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:14:56.8553432 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n;
+	cout << sizeof(int) << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:15:22.0498410 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n;
+	cout << sizeof(int) << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:15:35.3646741 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 입출력
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n;
+	cout << sizeof(n) << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:43:42.2159851 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n{0x7F'FF'FF'FF};
+	cout << n << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:44:16.7314618 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n{0x7F'FF'FF'FF};
+	cout << numeric_limits<int>::max() << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:44:25.1741705 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+//구구단 문제!
+
+int main()
+{
+	int n{0x7F'FF'FF'FF};
+	cout << numeric_limits<float>::max() << endl;
+	save("0905.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:59:08.8465856 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+int n;		// n은 DATA SEGMENT에 생성된다.
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	for (int i = 0; i < 100; ++i) 
+		n[i] = rand();
+	for (int n : n)
+		cout << n << "\t";
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 14:59:34.3339013 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+int n;		// n은 DATA SEGMENT에 생성된다.
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	for (int i = 0; i < 100; ++i) 
+		n[i] = rand();
+	for (int n : n)
+		cout << n << "\t";
+	cout << endl;
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:01:52.9598335 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid;
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	for (int n : n)
+		cout << n << "\t";
+	cout << endl;
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:02:54.7136461 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	for (int n : n)
+		cout << n << "\t";
+	cout << endl;
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:07:09.3888550 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	for (int n : n) {// range for, range based for
+		int i = 0;
+		cout << n << "\t";
+		if (i % 9 == 0)
+			cout << endl;	
+	}	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:07:24.3302364 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	for (int n : n) {// range for, range based for
+		int i = 0;
+		cout << n << "\t";
+		i++;
+		if (i % 9 == 0)
+			cout << endl;	
+	}	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:08:34.8191497 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) // range for, range based for
+		cout << n << "\t";
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:08:46.6997198 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 10; ++i)
+		n[i] = uid(dre);
+
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) // range for, range based for
+		cout << n << "\t";
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:08:58.6021427 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) // range for, range based for
+		cout << n << "\t";
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:01.6757473 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:07.1812138 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:08.2656889 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:09.1990958 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:10.1042202 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:10.8723661 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:11.6978218 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:12.5791695 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:17.7466280 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:10:36.2520554 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:10.5364110 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:11.5080051 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:12.6087578 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:13.7163688 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:14.8835444 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:17.0662748 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,500};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:23.9742595 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:26.1595239 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:27.3049929 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:28.3579292 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:29.4727138 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:42.0497006 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:43.5024719 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		/*if (max < n)
+			max = n;*/
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:50.6960949 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+		cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:11:59.9324776 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max = 0;
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int n : n) {
+		if (max < n)
+			max = n;
+		//cout << n << "\t";
+	}
+	cout << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:13:51.1449924 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[100];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid {1,1000};
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max{n[0]};
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int num : n) {
+		if (max < num)
+			max = num;
+	}
+	cout << "최댓값은: " << max << endl;
+	cout << endl;	
+	
+		
+	
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:15:47.1871840 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[10000];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid;
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max{n[0]};
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int num : n) {
+		if (max < num)
+			max = num;
+	}
+	cout << "최댓값은: " << max << endl;
+	/*for (int n : n)
+		cout << n << "\t";
+	cout << endl;*/
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:16:16.2699031 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[10000];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid;
+
+	for (int i = 0; i < 100; ++i)
+		n[i] = uid(dre);
+	int max{n[0]};
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int num : n) {
+		if (max < num)
+			max = num;
+	}
+	cout << "최댓값은: " << max << endl;
+	/*for (int n : n)
+		cout << n << "\t";
+	cout << endl;*/
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:16:29.2761053 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[10000];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid;
+
+	for (int i = 0; i < 10000; ++i)
+		n[i] = uid(dre);
+	int max{n[0]};
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	for (int num : n) {
+		if (max < num)
+			max = num;
+	}
+	cout << "최댓값은: " << max << endl;
+	/*for (int n : n)
+		cout << n << "\t";
+	cout << endl;*/
+	save("0905.cpp");
+}	
+-------------------------------------------------------
+저장한 시간 - 2022-09-05 15:19:16.7014026 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 9월 5일 c++										1주차 2일
+// 자료형(data type)
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <random>
+#include "save.h"
+using namespace std;
+
+default_random_engine dre;
+
+int main()
+{
+	int n[10000];		// n은 STACK에 생성된다.
+	//new int;	// int는 free store에 생성된다.
+	
+	uniform_int_distribution<> uid;
+
+	for (int&n : n)
+		n = uid(dre);
+	// n의 값중 가장 큰 값을 찾아 출력하시오
+	int max{n[0]};
+	for (int num : n) {
+		if (max < num)
+			max = num;
+	}
+	cout << "최댓값은: " << max << endl;
+	/*for (int n : n)
+		cout << n << "\t";
+	cout << endl;*/
+	save("0905.cpp");
+}	

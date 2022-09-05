@@ -1,0 +1,3 @@
+﻿  0905.cpp
+C:\Users\User\source\repos\18\0905\0905\0905.cpp(15,6): warning C4101: 'n' :참조되지 않은 지역 변수입니다.
+  0905.vcxproj -> C:\Users\User\source\repos\18\0905\x64\Debug\0905.exe
