@@ -1,0 +1,1020 @@
+
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:04:13.0581178 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+int main()
+{
+	
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:05:43.6113873 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+int main()
+{
+	STRING a{ "12345" };
+	STRING b = a;
+
+	std::cout << a << std::endl;
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:06:25.3293208 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+int main()
+{
+	STRING a{ "12345" };
+	STRING b = a;
+
+	std::cout << a << std::endl;
+
+	save("01.cpp");
+	save("STRING.h");
+	save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:06:25.3412530 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.h
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+//------------------------------------------------------------------
+
+#pragma once
+
+class STRING {
+	size_t num;							// 저장한 글자 수
+	char* p;							// 글자가 저장된 메모리 번지
+public:
+	STRING();							// 디폴트 생성자
+	STRING(const char*);				
+	~STRING();							// 소멸자
+
+	STRING(const STRING&);				// 복사생성자
+	STRING& operator=(const STRING&);	// 복사할당연산자
+							// 전방 선언(forward declaration)
+	friend std::ostream& operator<<(std::ostream&, const STRING&);	//
+};
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:06:25.3471894 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.cpp
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "STRING.h"
+
+STRING::STRING() : num{ }, p{ nullptr } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	std::cout << "STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(const char* s) : num{ strlen(s) } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	p = new char[num];
+	memcpy(p, s, num);
+	std::cout << "STRING(const char*) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::~STRING()	// 소멸자
+{		
+	std::cout << "~STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+	delete[] p;
+}
+
+STRING::STRING(const STRING& other) : num{ other.num }
+{
+	p = new char[num];
+	memcpy(p, other.p, num);
+	std::cout << "STRING(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING& STRING::operator=(const STRING& other)
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	memcpy(p, other.p, num);
+	std::cout << "operator=(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+//class ostream;
+std::ostream& operator<<(std::ostream& os, const STRING& s)
+{
+	for (int i = 0; i < s.num; ++i)
+		os << s.p[i];
+
+	return os;
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:18:38.1926267 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+//------------------------------------------------------------------
+int main()
+//------------------------------------------------------------------
+{
+	STRING a{ "12345" };
+	STRING b = std::move(a);
+
+	std::cout << a << std::endl;		// ostream& operator<<(ostream&, const STRING&) <- CODE에 저장
+	std::cout << b << std::endl;
+
+	save("01.cpp");
+	//save("STRING.h");
+	//save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:19:27.0280121 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+//------------------------------------------------------------------
+int main()
+//------------------------------------------------------------------
+{
+	STRING a{ "12345" };
+	STRING b = static_cast<STRING&&>(a);		// move(a)의 진짜 모습
+
+	std::cout << a << std::endl;		// ostream& operator<<(ostream&, const STRING&) <- CODE에 저장
+	std::cout << b << std::endl;
+
+	save("01.cpp");
+	//save("STRING.h");
+	//save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:38:59.3811655 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+//------------------------------------------------------------------
+int main()
+//------------------------------------------------------------------
+{
+	STRING a{ "12345" };
+	STRING b = static_cast<STRING&&>(a);		// move(a)의 진짜 모습
+
+	std::cout << a << std::endl;		// ostream& operator<<(ostream&, const STRING&) <- CODE에 저장
+	std::cout << b << std::endl;
+
+	save("01.cpp");
+	//save("STRING.h");
+	//save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:44:15.0153682 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+//------------------------------------------------------------------
+int main()
+//------------------------------------------------------------------
+{
+	STRING a{ "12345" };
+	STRING b = std::move(a); //static_cast<STRING&&>(a);		// move(a)의 진짜 모습
+	// 이동
+
+	std::cout << a << std::endl;		// ostream& operator<<(ostream&, const STRING&) <- CODE에 저장
+	std::cout << b << std::endl;
+
+	save("01.cpp");
+	//save("STRING.h");
+	//save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:46:19.3636412 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+//------------------------------------------------------------------
+int main()
+//------------------------------------------------------------------
+{
+	STRING a{ "12345" };
+	STRING b = std::move(a); //static_cast<STRING&&>(a);		// move(a)의 진짜 모습
+	// 이동
+
+	std::cout << a << std::endl;
+	std::cout << b << std::endl;
+
+	save("01.cpp");
+	save("STRING.h");
+	save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:46:19.3740579 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.h
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+// 2022년 11월 7일 이동지원
+//------------------------------------------------------------------
+
+#pragma once
+
+class STRING {
+	size_t num;							// 저장한 글자 수
+	char* p;							// 글자가 저장된 메모리 번지
+public:
+	STRING();							// 디폴트 생성자
+	STRING(const char*);				
+	~STRING();							// 소멸자
+
+	STRING(const STRING&);				// 복사생성자
+	STRING& operator=(const STRING&);	// 복사할당연산자			
+
+	// 2022.11.07 이동생성자 코딩
+	STRING(STRING&&);					// 이동생성자, && = r-value reference
+	STRING& operator=(STRING&&);		// 이동할당연산자
+
+	friend std::ostream& operator<<(std::ostream&, const STRING&);
+};
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:46:19.3786596 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.cpp
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "STRING.h"
+
+STRING::STRING() : num{ }, p{ nullptr } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	std::cout << "STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(const char* s) : num{ strlen(s) } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	p = new char[num];
+	memcpy(p, s, num);
+	std::cout << "STRING(const char*) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::~STRING()	// 소멸자
+{		
+	std::cout << "~STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+	delete[] p;
+}
+
+STRING::STRING(const STRING& other) : num{ other.num }		// 복사생성자
+{
+	p = new char[num];
+	memcpy(p, other.p, num);
+	std::cout << "STRING(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING& STRING::operator=(const STRING& other)				// 복사할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	memcpy(p, other.p, num);
+	std::cout << "operator=(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(STRING&& other) : num{ other.num }	//이동생성자
+{
+	p = other.p;
+	other.num = 0;
+	other.p = nullptr;
+	std::cout << "STRING(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+STRING& STRING::operator=(STRING&& other)		// 이동할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	p = other.p;
+
+	other.num = 0;
+	other.p = nullptr;
+
+	std::cout << "operator=(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const STRING& s)
+{
+	for (int i = 0; i < s.num; ++i)
+		os << s.p[i];
+
+	return os;
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:51:09.4356837 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	for (STRING s : s)
+		std::cout << s << std::endl;
+
+	save("01.cpp");
+	//save("STRING.h");
+	//save("STRING.cpp");
+}
+
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:57:28.0212187 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	for (STRING s : s)
+		std::cout << s << std::endl;
+
+	save("01.cpp");
+	save("STRING.h");
+	save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:57:28.0280082 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.h
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+// 2022년 11월 7일 이동지원
+//------------------------------------------------------------------
+
+#pragma once
+
+class STRING {
+	size_t num;							// 저장한 글자 수
+	char* p;							// 글자가 저장된 메모리 번지
+public:
+	STRING();							// 디폴트 생성자
+	STRING(const char*);				
+	~STRING();							// 소멸자
+
+	STRING(const STRING&);				// 복사생성자
+	STRING& operator=(const STRING&);	// 복사할당연산자			
+
+	// 2022.11.07 이동생성자 코딩
+	STRING(STRING&&);					// 이동생성자, && = r-value reference
+	STRING& operator=(STRING&&);		// 이동할당연산자
+
+	friend std::ostream& operator<<(std::ostream&, const STRING&);
+};
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:57:28.0333341 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.cpp
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "STRING.h"
+
+bool 관찰{ false };		// 2022.11.07 관찰메세지 제어용
+
+STRING::STRING() : num{ }, p{ nullptr } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	if (관찰)
+		std::cout << "STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(const char* s) : num{ strlen(s) } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	p = new char[num];
+	memcpy(p, s, num);
+	if (관찰)
+		std::cout << "STRING(const char*) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::~STRING()	// 소멸자
+{	
+	if (관찰)
+		std::cout << "~STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+	delete[] p;
+}
+
+STRING::STRING(const STRING& other) : num{ other.num }		// 복사생성자
+{
+	p = new char[num];
+	memcpy(p, other.p, num);
+	if (관찰)
+		std::cout << "STRING(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING& STRING::operator=(const STRING& other)				// 복사할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	memcpy(p, other.p, num);
+	if (관찰)
+		std::cout << "operator=(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(STRING&& other) : num{ other.num }	//이동생성자
+{
+	p = other.p;
+	other.num = 0;
+	other.p = nullptr;
+	if (관찰)
+		std::cout << "STRING(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+STRING& STRING::operator=(STRING&& other)		// 이동할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	p = other.p;
+
+	other.num = 0;
+	other.p = nullptr;
+	if (관찰)
+		std::cout << "operator=(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+std::ostream& operator<<(std::ostream& os, const STRING& s)
+{
+	for (int i = 0; i < s.num; ++i)
+		os << s.p[i];
+
+	return os;
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 14:59:39.3944324 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	관찰 = true;
+	for (STRING s : s)
+		std::cout << s << std::endl;
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:06:04.0661979 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	관찰 = true;
+	for (STRING s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:06:36.6109660 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	관찰 = true;
+	for (STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:09:47.3482846 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	std::cout << sizeof(s) << std::endl;
+
+	관찰 = true;
+	for (const STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.		읽기만 하려면 const &를 붙인다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:10:08.1925309 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	std::cout << sizeof(s[0]) << std::endl;
+
+	관찰 = true;
+	for (const STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.		읽기만 하려면 const &를 붙인다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:20:56.5737696 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	std::cout << sizeof(s[0]) << std::endl;
+
+	qsort(s, 5, sizeof(STRING), [](const void* p, const void* q) {
+		STRING a = *(STRING*)p;
+		STRING b = *static_cast<STRING*>(const_cast<void*>(q));
+
+		return a.getNum() - b.getNum(); });
+
+	관찰 = true;
+	for (const STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.		읽기만 하려면 const &를 붙인다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:21:20.3033337 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	std::cout << sizeof(s[0]) << std::endl;
+	관찰 = true;
+	qsort(s, 5, sizeof(STRING), [](const void* p, const void* q) {
+		STRING a = *(STRING*)p;
+		STRING b = *static_cast<STRING*>(const_cast<void*>(q));
+
+		return a.getNum() - b.getNum(); });
+	관찰 = false;
+
+	관찰 = true;
+	for (const STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.		읽기만 하려면 const &를 붙인다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	// save("STRING.h");
+	// save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:21:52.7056566 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 11월 7일 c++										9주차 2일
+// c++ 언어가 제공하는 string클래스와 같은 기능을 갖는 STRING을 만들어 본다.
+// 2022.11.07 STRING 파일 분리
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "STRING.h"
+
+// 객체의 이동 - 프로그래머가 직접 이동시킬 일은 없다.
+// 라이브러리 함수가 이동을 지원하는 객체인 경우 복사하는 대신 이동을 사용한다.
+// ex) sort, 모든 동적자료구조(vector, list, set, map, unordered_set, ...)
+// 클래스가 이동을 지원한다면 비약적으로 실행 속도가 빨라진다.
+
+extern bool 관찰;
+
+//--------
+int main()
+//--------
+{
+	STRING s[5]{ "123", "1", "12345", "1234", "12" };
+
+	// [문제] s를 글자 수 기준 오름차순으로 정렬하라.
+
+	std::cout << sizeof(s[0]) << std::endl;
+	관찰 = true;
+	qsort(s, 5, sizeof(STRING), [](const void* p, const void* q) {
+		STRING a = *(STRING*)p;
+		STRING b = *static_cast<STRING*>(const_cast<void*>(q));
+
+		return a.getNum() - b.getNum(); });
+	관찰 = false;
+
+	관찰 = true;
+	for (const STRING& s : s)		// s 라는 새로운 공간을 만들고 s를 하나씩 가져온다.		읽기만 하려면 const &를 붙인다.
+		std::cout << s << std::endl;		// operator(os, const STRING& s)
+	관찰 = false;
+
+	save("01.cpp");
+	save("STRING.h");
+	save("STRING.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:21:52.7153941 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.h
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+// 2022년 11월 7일 이동지원
+//------------------------------------------------------------------
+
+#pragma once
+
+class STRING {
+	size_t num;							// 저장한 글자 수
+	char* p;							// 글자가 저장된 메모리 번지
+public:
+	STRING();							// 디폴트 생성자
+	STRING(const char*);				
+	~STRING();							// 소멸자
+
+	STRING(const STRING&);				// 복사생성자
+	STRING& operator=(const STRING&);	// 복사할당연산자			
+
+	// 2022.11.07 이동생성자 코딩
+	STRING(STRING&&);					// 이동생성자, && = r-value reference
+	STRING& operator=(STRING&&);		// 이동할당연산자
+
+	// 2022.11.07 getter
+	int getNum() const;
+
+	friend std::ostream& operator<<(std::ostream&, const STRING&);
+};
+-------------------------------------------------------
+저장한 시간 - 2022-11-07 15:21:52.7209106 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// STRING.cpp
+// 표준 string과 같은 동작을 하는 class
+// 2022년 11월 7일 c++										9주차 2일
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "STRING.h"
+
+bool 관찰{ false };		// 2022.11.07 관찰메세지 제어용
+
+STRING::STRING() : num{ }, p{ nullptr } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	if (관찰)
+		std::cout << "STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(const char* s) : num{ strlen(s) } 	// 디폴트 생성자 (num, p 를 초기화)
+{
+	p = new char[num];
+	memcpy(p, s, num);
+	if (관찰)
+		std::cout << "STRING(const char*) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::~STRING()	// 소멸자
+{	
+	if (관찰)
+		std::cout << "~STRING() - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+	delete[] p;
+}
+
+STRING::STRING(const STRING& other) : num{ other.num }		// 복사생성자
+{
+	p = new char[num];
+	memcpy(p, other.p, num);
+	if (관찰)
+		std::cout << "STRING(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING& STRING::operator=(const STRING& other)				// 복사할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	memcpy(p, other.p, num);
+	if (관찰)
+		std::cout << "operator=(const STRING&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING::STRING(STRING&& other) : num{ other.num }	//이동생성자
+{
+	p = other.p;
+	other.num = 0;
+	other.p = nullptr;
+	if (관찰)
+		std::cout << "STRING(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+STRING& STRING::operator=(STRING&& other)		// 이동할당연산자
+{
+	if (this == &other)
+		return *this;
+
+	delete[] p;
+	num = other.num;
+	p = other.p;
+
+	other.num = 0;
+	other.p = nullptr;
+	if (관찰)
+		std::cout << "operator=(STRING&&) - 글자수: " << num << " , 메모리: " << static_cast<void*>(p) << std::endl;
+}
+
+int STRING::getNum() const
+{
+	return num;
+}
+
+std::ostream& operator<<(std::ostream& os, const STRING& s)
+{
+	for (int i = 0; i < s.num; ++i)
+		os << s.p[i];
+
+	return os;
+}
+
