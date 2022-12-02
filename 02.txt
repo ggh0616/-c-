@@ -1,0 +1,942 @@
+
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:40:44.0107647 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+int change(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+	return temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << "," << b << std::endl;	// 2, 1이 출력되어야 한다.
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:41:52.5965436 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+void change(int&, int&);
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << "," << b << std::endl;	// 2, 1이 출력되어야 한다.
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:44:25.2590301 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "Language" }, d{ "Programing" };
+	change(c, d);
+	std::cout << c << ", " << d << std::endl;
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:45:54.3124444 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "Language" }, d{ "Programing" };
+	change(c, d);
+	std::cout << c << ", " << d << std::endl;
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:56:58.2563129 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog() { }
+	Dog(int a) : e(a) { }
+	void out()
+	{
+		std::cout << e << std::endl;
+	}
+	/*void change(Dog &e, Dog &f)
+	{
+		Dog temp = e;
+		e = f;
+		f = temp;
+	}*/
+};
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "Language" }, d{ "Programing" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// Programing, Language
+
+	Dog e{ 1 };
+	e.out();
+	//change(e, f);
+	//std::cout << e << ", " << f << std::endl;		// 2, 1
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 13:57:00.0290943 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog() { }
+	Dog(int a) : e(a) { }
+	void out()
+	{
+		std::cout << e << std::endl;
+	}
+	/*void change(Dog &e, Dog &f)
+	{
+		Dog temp = e;
+		e = f;
+		f = temp;
+	}*/
+};
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "Language" }, d{ "Programing" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// Programing, Language
+
+	Dog e{ 1 };
+	e.out();
+	//change(e, f);
+	//std::cout << e << ", " << f << std::endl;		// 2, 1
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:02:18.3708613 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+class Dog;									// 전방선언(forward diciralation)
+void change(Dog&, Dog&);
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog(int a) : e{ a } { }
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		return os << dog.e;
+	}
+};
+
+void change(Dog& e, Dog& f)
+{
+	Dog temp{ e };
+	e = f;
+	f = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "Language" }, d{ "Programing" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// Programing, Language
+
+	Dog e{ 1 }, f{ 2 };
+	change(e, f);
+	std::cout << e << ", " << f << std::endl;		// 2, 1
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:04:41.3398608 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+class Dog;									// 전방선언(forward diciralation)
+void change(Dog&, Dog&);
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog(int a) : e{ a } { }
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		return os << dog.e;
+	}
+};
+
+void change(Dog& e, Dog& f)		// 자동으로 복사생성
+{
+	Dog temp{ e };				// 자동으로 할당생성
+	e = f;
+	f = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "1" }, d{ "2" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// 2, 1이 출력되어야 한다.
+
+	Dog e{ 1 }, f{ 2 };
+	change(e, f);
+	std::cout << e << ", " << f << std::endl;		// 2, 1이 출력되어야 한다.
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:07:28.8529780 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+void change(int&, int&);
+void change(std::string&, std::string&);
+class Dog;									// 전방선언(forward diciralation)
+//void change(Dog&, Dog&);
+void change(auto&, auto&);
+
+
+
+void change(int& a, int& b)
+{
+	int temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog(int a) : e{ a } { }
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		return os << dog.e;
+	}
+};
+
+//void change(Dog& e, Dog& f)		// 자동으로 복사생성
+//{
+//	Dog temp{ e };				// 자동으로 할당생성
+//	e = f;
+//	f = temp;
+//}
+
+void change(auto& x, auto& y)
+{
+	auto temp = x;
+	x = y;
+	y = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "1" }, d{ "2" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// 2, 1이 출력되어야 한다.
+
+	Dog e{ 1 }, f{ 2 };
+	change(e, f);
+	std::cout << e << ", " << f << std::endl;		// 2, 1이 출력되어야 한다.
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:07:43.2757381 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+//void change(int&, int&);
+//void change(std::string&, std::string&);
+class Dog;									// 전방선언(forward diciralation)
+//void change(Dog&, Dog&);
+void change(auto&, auto&);
+
+
+
+//void change(int& a, int& b)
+//{
+//	int temp{ a };
+//	a = b;
+//	b = temp;
+//}
+
+//void change(std::string& c, std::string& d)
+//{
+//	std::string temp{ c };
+//	c = d;
+//	d = temp;
+//}
+
+class Dog {
+	int e;
+public:
+	Dog(int a) : e{ a } { }
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		return os << dog.e;
+	}
+};
+
+//void change(Dog& e, Dog& f)		// 자동으로 복사생성
+//{
+//	Dog temp{ e };				// 자동으로 할당생성
+//	e = f;
+//	f = temp;
+//}
+
+void change(auto& x, auto& y)
+{
+	auto temp = x;
+	x = y;
+	y = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.
+// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "1" }, d{ "2" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// 2, 1이 출력되어야 한다.
+
+	Dog e{ 1 }, f{ 2 };
+	change(e, f);
+	std::cout << e << ", " << f << std::endl;		// 2, 1이 출력되어야 한다.
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:09:24.0157860 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+template<typename X>
+void change(X&, X&);
+
+template <typename X>
+
+void change(X& a, X& b)
+{
+	X temp{ a };
+	a = b;
+	b = temp;
+}
+
+void change(std::string& c, std::string& d)
+{
+	std::string temp{ c };
+	c = d;
+	d = temp;
+}
+
+class Dog {
+	int e;
+public:
+	Dog(int a) : e{ a } { }
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		return os << dog.e;
+	}
+};
+
+void change(Dog& e, Dog& f)		// 자동으로 복사생성
+{
+	Dog temp{ e };				// 자동으로 할당생성
+	e = f;
+	f = temp;
+}
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.// 
+//--------
+int main()
+//--------
+{
+	int a{ 1 }, b{ 2 };
+	change(a, b);
+	std::cout << a << ", " << b << std::endl;		// 2, 1이 출력되어야 한다.
+
+	std::string c{ "1" }, d{ "2" };
+	change(c, d);		// 오버로딩
+	std::cout << c << ", " << d << std::endl;		// 2, 1이 출력되어야 한다.
+
+	Dog e{ 1 }, f{ 2 };
+	change(e, f);
+	std::cout << e << ", " << f << std::endl;		// 2, 1이 출력되어야 한다.
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:18:54.5236077 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+template<typename T>
+void change(T&, T&);
+
+template <typename T>
+
+void change(T& a, T& b)
+{
+	T temp{ a };
+	a = b;
+	b = temp;
+}
+
+class Monster {
+	int num;
+public:
+	Monster(int n) : num{ n } { }
+	void show() const {
+		std::cout << "나는 " << num << " 번 몬스터" << std::endl;
+	}
+};
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.// 
+//--------
+int main()
+//--------
+{
+	Monster a{ 1 }, b{ 2 };
+	change(a, b);
+	a.show();
+	b.show();
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 14:23:52.4121712 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+template<typename T>		// template 라는 틀을 생성
+void change(T&, T&);
+template <typename T>
+
+void change(T& a, T& b)		// 틀의 내용 정리
+{
+	T temp{ a };
+	a = b;
+	b = temp;
+}
+
+class Monster {
+	int num;
+public:
+	Monster(int n) : num{ n } { }
+	void show() const {
+		std::cout << "나는 " << num << " 번 몬스터" << std::endl;
+	}
+};
+
+// [문제] main을 수정하지 말고 의도대로 실행되게 하라.// 
+//--------
+int main()
+//--------
+{
+	Monster a{ 1 }, b{ 2 };
+	change(a, b);		// 틀을 불러온다.
+	a.show();
+	b.show();
+
+	save("01.cpp");
+}
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 15:03:48.3389128 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿(template) - 소스코드를 컴파일러가 생성할 수 있는 틀 (자료형과 무관한 코딩)
+// 제네릭(Generics) 프로그래밍을 하기 위한 C++의 핵심 키워드
+// 
+// - 장점: 자료형의 종류가 무한하더라도 컴파일러가 필요한 코드를 알아서 생성
+// - 단점: 컴파일 하는 시간이 조금 더 걸린다.
+//		   오류가 났을때 뭐가 잘못됐는지 이해하기 어렵다.
+// - 오해: 템플릿으로 작성한 코드는 속도가 느리다.
+//		-> 절대 그렇지 않다.
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+// [문제] 템플릿 함수 하나만 작성하여
+// main이 수정없이 실행되게 하라.
+
+template<typename T>
+T add(T, T);
+
+template<typename T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+//--------
+int main()
+//--------
+{
+	std::cout << add(1, 2) << std::endl;										// 3
+	//std::cout << add(std::string{"3 = "}, std::string{"1 + 2"}) << std::endl;	// 3 = 1 + 2
+	//std::cout << add(Dog(1), Dog(2)) << std::endl;								// 3
+	save("01.cpp");
+}
+
+
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 15:03:54.8842924 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿(template) - 소스코드를 컴파일러가 생성할 수 있는 틀 (자료형과 무관한 코딩)
+// 제네릭(Generics) 프로그래밍을 하기 위한 C++의 핵심 키워드
+// 
+// - 장점: 자료형의 종류가 무한하더라도 컴파일러가 필요한 코드를 알아서 생성
+// - 단점: 컴파일 하는 시간이 조금 더 걸린다.
+//		   오류가 났을때 뭐가 잘못됐는지 이해하기 어렵다.
+// - 오해: 템플릿으로 작성한 코드는 속도가 느리다.
+//		-> 절대 그렇지 않다.
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+// [문제] 템플릿 함수 하나만 작성하여
+// main이 수정없이 실행되게 하라.
+
+template<typename T>
+T add(T, T);
+
+template<typename T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+//--------
+int main()
+//--------
+{
+	std::cout << add(1, 2) << std::endl;										// 3
+	std::cout << add(std::string{"3 = "}, std::string{"1 + 2"}) << std::endl;	// 3 = 1 + 2
+	//std::cout << add(Dog(1), Dog(2)) << std::endl;								// 3
+	save("01.cpp");
+}
+
+
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 15:12:58.5204975 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿(template) - 소스코드를 컴파일러가 생성할 수 있는 틀 (자료형과 무관한 코딩)
+// 제네릭(Generics) 프로그래밍을 하기 위한 C++의 핵심 키워드
+// 
+// - 장점: 자료형의 종류가 무한하더라도 컴파일러가 필요한 코드를 알아서 생성
+// - 단점: 컴파일 하는 시간이 조금 더 걸린다.
+//		   오류가 났을때 뭐가 잘못됐는지 이해하기 어렵다.
+// - 오해: 템플릿으로 작성한 코드는 속도가 느리다.
+//		-> 절대 그렇지 않다.
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+// [문제] 템플릿 함수 하나만 작성하여
+// main이 수정없이 실행되게 하라.
+
+// 템플릿 함수는 선언과 정의를 한번에 한다.
+template<class T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+class Dog {
+	int num;
+public:
+	Dog(int n) : num{ n } { }
+	operator int() {
+		return num;
+	}
+};
+
+template< >	// 템플릿을 Dog에 대하여 특수화(specialization)
+Dog add(Dog a, Dog b)
+{
+	return a + b;
+}
+
+//--------
+int main()
+//--------
+{
+	std::cout << add(1, 2) << std::endl;										// 3
+	std::cout << add(std::string{"3 = "}, std::string{"1 + 2"}) << std::endl;	// 3 = 1 + 2
+	std::cout << add(Dog(1), Dog(2)) << std::endl;								// 3
+	save("01.cpp");
+}
+
+
+-------------------------------------------------------
+저장한 시간 - 2022-12-02 15:17:17.3493809 GMT+9
+-------------------------------------------------------
+//------------------------------------------------------------------
+// 2022년 12월 2일 c++									  13주차 1일
+// 
+// 템플릿(template) - 소스코드를 컴파일러가 생성할 수 있는 틀 (자료형과 무관한 코딩)
+// 제네릭(Generics) 프로그래밍을 하기 위한 C++의 핵심 키워드
+// 
+// - 장점: 자료형의 종류가 무한하더라도 컴파일러가 필요한 코드를 알아서 생성
+// - 단점: 컴파일 하는 시간이 조금 더 걸린다.
+//		   오류가 났을때 뭐가 잘못됐는지 이해하기 어렵다.
+// - 오해: 템플릿으로 작성한 코드는 속도가 느리다.
+//		-> 절대 그렇지 않다.
+//------------------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+
+// [문제] 템플릿 함수 하나만 작성하여
+// main이 수정없이 실행되게 하라.
+
+// 템플릿 함수는 선언과 정의를 한번에 한다.
+template<class T>
+T add(T a, T b)
+{
+	return a + b;
+}
+
+class Dog {
+	int num;
+public:
+	Dog(int n) : num{ n } { }
+	Dog operator+(const Dog& rhs) {
+		Dog temp(*this);
+		temp.num = num + rhs.num;
+		return temp;
+	}
+	friend std::ostream& operator<<(std::ostream& os, const Dog& dog) {
+		os << dog.num;
+		return os;
+	}
+};
+
+//template< >	// 템플릿을 Dog에 대하여 특수화(specialization)
+//Dog add(Dog a, Dog b)
+//{
+//	return a + b;
+//}
+
+//--------
+int main()
+//--------
+{
+	std::cout << add(1, 2) << std::endl;										// 3
+	std::cout << add(std::string{"3 = "}, std::string{"1 + 2"}) << std::endl;	// 3 = 1 + 2
+	std::cout << add(Dog(1), Dog(2)) << std::endl;								// 3
+	save("01.cpp");
+}
+
